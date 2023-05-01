@@ -5,7 +5,7 @@
  let songItems = Array.from(document.getElementsByClassName("songItem"));
  let songItemPlay= Array.from(document.getElementsByClassName("songItemPlay"));
  let masterSongName= document.getElementById("masterSongName");
-   
+ 
  let songs=[
     {songName:"Lullaby Rajkumari", filePath:"songs/0.mp3", coverPath:"covers/0.jpg", duration:"3:26"},
     {songName:"Belageddu", filePath:"songs/1.mp3", coverPath:"covers/1.jpg", duration:"3:37" },
@@ -23,7 +23,6 @@
    element.getElementsByTagName("img")[0].src = songs[i].coverPath;
    element.getElementsByClassName("songName")[0].innerText = songs[i].songName 
    element.getElementsByClassName("timestamp")[0].firstChild.textContent = songs[i].duration;
-  
 });
 
 // adding events to play key
@@ -43,10 +42,7 @@
   }
 });
 
-// adding events to progressBar
-//  audioElement.addEventListener('timeupdate', ()=>{
-//   myProgressBar.value = parseInt((audioElement.currentTime/audioElement.duration) * 100);
-// })
+
 
 audioElement.addEventListener('timeupdate', ()=>{
   myProgressBar.value = parseInt((audioElement.currentTime/audioElement.duration) * 100);
@@ -81,7 +77,6 @@ const makeAllPlay = ()=>{
  
 songItemPlay.forEach(item=>{
     item.addEventListener('click', (e)=>{
-      console.log(item);
     makeAllPlay();
     songIndex=parseInt(e.target.id) ;
     e.target.classList.remove("fa-play-circle");
@@ -93,31 +88,15 @@ songItemPlay.forEach(item=>{
     gif.style.opacity = 1;
     playKey.classList.remove("fa-play-circle")
     playKey.classList.add("fa-pause-circle") 
+    console.log(audioElement)
     // let tem= document.getElementById("2");
     // tem.style.color="red"
-   console.log( "display", e.target.parentElement.parentElement.)
+    // let name =e.target.parentElement.parentElement.previousElementSibling.innerText
+    // console.log( name.style.color="#ff0000")
 }) 
 })
 
-// audioElement.addEventListener('timeupdate', ()=>{
-//   myProgressBar.value = parseInt((audioElement.currentTime/audioElement.duration) * 100);
-// while (audioElement.currentTime === audioElement.duration){
-//   if(songIndex>9){
-//     songIndex=0;
-//   }
-//     else{
-//       songIndex+=1
-//     }
-//   audioElement.src= songs[songIndex].filePath ;
-//   audioElement.currentTime = 0;
-//   audioElement.play();
-//   masterSongName.innerText=songs[songIndex].songName;
-//   gif.style.opacity = 1;
-//   playKey.classList.remove("fa-play-circle")
-//   playKey.classList.add("fa-pause-circle") 
-//   makeAllPlay();
-//   }
-// })
+
 
 document.getElementById("previous").addEventListener('click', (e)=>{
   if(songIndex<=0){
