@@ -43,7 +43,7 @@
 });
 
 
-
+// adding time update event to progress bar
 audioElement.addEventListener('timeupdate', ()=>{
   myProgressBar.value = parseInt((audioElement.currentTime/audioElement.duration) * 100);
 while (audioElement.currentTime === audioElement.duration){
@@ -64,10 +64,13 @@ while (audioElement.currentTime === audioElement.duration){
   }
 })
 
+// adding change event to progress bar
+
 myProgressBar.addEventListener('change', ()=>{
   audioElement.currentTime= parseInt((myProgressBar.value*audioElement.duration)/100);
 })
 
+// to make all key as play
 const makeAllPlay = ()=>{
  Array.from(document.getElementsByClassName("songItemPlay")).forEach(item=>{
    item.classList.remove('fa-pause-circle');
@@ -75,6 +78,7 @@ const makeAllPlay = ()=>{
  })
 }
  
+// adding event to songItemPlay key
 songItemPlay.forEach(item=>{
     item.addEventListener('click', (e)=>{
     makeAllPlay();
@@ -96,7 +100,7 @@ songItemPlay.forEach(item=>{
 }) 
 })
 
-
+// adding item to backward key
 
 document.getElementById("previous").addEventListener('click', (e)=>{
   if(songIndex<=0){
@@ -112,6 +116,8 @@ document.getElementById("previous").addEventListener('click', (e)=>{
   masterPlay.classList.remove('fa-play-circle');
   masterPlay.classList.add('fa-pause-circle');
 })
+
+// adding item to forward key
  
 document.getElementById("next").addEventListener('click', (e)=>{
   if(songIndex>9){
